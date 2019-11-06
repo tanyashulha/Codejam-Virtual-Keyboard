@@ -724,21 +724,27 @@ function isShift(button) {
   } return false;
 }
 
+function isCtrl(button) {
+  if (button.dataset.key === '17') {
+    return true;
+  } return false;
+}
+
 function getButtonByCode(keyCode) {
   let buttons = [...document.getElementsByClassName('button')];
   buttons = buttons.filter((button) => keyCode === Number(button.dataset.key));
 
-  return buttons;
+  return [buttons[0]];
 }
 
 function addValueToTextarea(keyCode) {
   const arrCodes = [9, 20, 8, 46, 13, 16, 17, 91, 18, 37, 38, 39, 40];
   let letter;
   if (!arrCodes.includes(keyCode)) {
-    if (currentLanguage === 'en') {
+    if (!currentLanguage.includes('Shift')) {
       letter = String.fromCharCode(keyCode).toLowerCase();
       textField.innerHTML += letter;
-    } else if (currentLanguage === 'enShift') {
+    } else if (currentLanguage.includes('Shift')) {
       letter = String.fromCharCode(keyCode);
       textField.innerHTML += letter;
     }
@@ -754,6 +760,15 @@ document.addEventListener('keydown', (e) => {
         newButton.classList.add('active');
       });
     }
+    if (isCtrl(button)) {
+      if (currentLanguage === 'enShift') {
+        currentLanguage = 'ruShift';
+        renderButtons(currentLanguage);
+      } else if (currentLanguage === 'ruShift') {
+        currentLanguage = 'enShift';
+        renderButtons(currentLanguage);
+      }
+    }
     if (button.dataset.key === '8') {
       textField.innerHTML = textField.innerHTML.slice(0, -1);
     }
@@ -767,7 +782,11 @@ document.addEventListener('keyup', (e) => {
   buttons.forEach((button) => {
     if (e.keyCode === Number(button.dataset.key)) {
       if (isShift(button)) {
-        currentLanguage = 'en';
+        if (currentLanguage === 'ruShift') {
+          currentLanguage = 'ru';
+        } else if (currentLanguage === 'enShift') {
+          currentLanguage = 'en';
+        }
         renderButtons(currentLanguage);
       }
       button.classList.remove('active');
