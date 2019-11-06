@@ -8,8 +8,6 @@ const keyboardContainer = document.createElement('div');
 keyboardContainer.className = 'keyboard';
 document.body.append(keyboardContainer);
 
-let lang = 'en';
-
 function getButton(value, className, keyCode) {
   if (className !== undefined) {
     return `<button class="button ${className}" data-key="${keyCode}">${value}</button>`;
@@ -26,6 +24,12 @@ const buttonsData = [
     },
     enShift: {
       value: '~',
+    },
+    ru: {
+      value: 'ё'
+    },
+    ruShift: {
+      value: 'Ё'
     }
   },
   {
@@ -129,6 +133,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'Q',
+    },
+    ru: {
+      value: 'й'
+    },
+    ruShift: {
+      value: 'Й'
     }
   },
   {
@@ -138,6 +148,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'W',
+    },
+    ru: {
+      value: 'ц'
+    },
+    ruShift: {
+      value: 'Ц'
     }
   },
   {
@@ -147,6 +163,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'E',
+    },
+    ru: {
+      value: 'у'
+    },
+    ruShift: {
+      value: 'У'
     }
   },
   {
@@ -156,6 +178,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'R',
+    },
+    ru: {
+      value: 'к'
+    },
+    ruShift: {
+      value: 'К'
     }
   },
   {
@@ -165,6 +193,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'T',
+    },
+    ru: {
+      value: 'е'
+    },
+    ruShift: {
+      value: 'Е'
     }
   },
   {
@@ -174,6 +208,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'Y',
+    },
+    ru: {
+      value: 'н'
+    },
+    ruShift: {
+      value: 'Н'
     }
   },
   {
@@ -183,6 +223,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'U',
+    },
+    ru: {
+      value: 'г'
+    },
+    ruShift: {
+      value: 'Г'
     }
   },
   {
@@ -192,6 +238,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'I',
+    },
+    ru: {
+      value: 'ш'
+    },
+    ruShift: {
+      value: 'Ш'
     }
   },
   {
@@ -201,6 +253,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'O',
+    },
+    ru: {
+      value: 'щ'
+    },
+    ruShift: {
+      value: 'Щ'
     }
   },
   {
@@ -210,6 +268,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'P',
+    },
+    ru: {
+      value: 'з'
+    },
+    ruShift: {
+      value: 'З'
     }
   },
   {
@@ -219,6 +283,12 @@ const buttonsData = [
     },
     enShift: {
       value: '{',
+    },
+    ru: {
+      value: 'х'
+    },
+    ruShift: {
+      value: 'Х'
     }
   },
   {
@@ -228,6 +298,12 @@ const buttonsData = [
     },
     enShift: {
       value: '}',
+    },
+    ru: {
+      value: 'ъ'
+    },
+    ruShift: {
+      value: 'Ъ'
     }
   },
   {
@@ -237,6 +313,12 @@ const buttonsData = [
     },
     enShift: {
       value: '/',
+    },
+    ru: {
+      value: '\\'
+    },
+    ruShift: {
+      value: '/'
     }
   },
   {
@@ -256,6 +338,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'A',
+    },
+    ru: {
+      value: 'ф'
+    },
+    ruShift: {
+      value: 'Ф'
     }
   },
   {
@@ -265,6 +353,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'S',
+    },
+    ru: {
+      value: 'ы'
+    },
+    ruShift: {
+      value: 'Ы'
     }
   },
   {
@@ -274,6 +368,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'D',
+    },
+    ru: {
+      value: 'в'
+    },
+    ruShift: {
+      value: 'В'
     }
   },
   {
@@ -283,6 +383,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'F',
+    },
+    ru: {
+      value: 'а'
+    },
+    ruShift: {
+      value: 'А'
     }
   },
   {
@@ -292,6 +398,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'G',
+    },
+    ru: {
+      value: 'п'
+    },
+    ruShift: {
+      value: 'П'
     }
   },
   {
@@ -301,6 +413,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'H',
+    },
+    ru: {
+      value: 'р'
+    },
+    ruShift: {
+      value: 'Р'
     }
   },
   {
@@ -310,6 +428,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'J',
+    },
+    ru: {
+      value: 'о'
+    },
+    ruShift: {
+      value: 'О'
     }
   },
   {
@@ -319,6 +443,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'K',
+    },
+    ru: {
+      value: 'л'
+    },
+    ruShift: {
+      value: 'Л'
     }
   },
   {
@@ -328,6 +458,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'L',
+    },
+    ru: {
+      value: 'д'
+    },
+    ruShift: {
+      value: 'Д'
     }
   },
   {
@@ -337,6 +473,12 @@ const buttonsData = [
     },
     enShift: {
       value: ':',
+    },
+    ru: {
+      value: 'ж'
+    },
+    ruShift: {
+      value: 'Ж'
     }
   },
   {
@@ -346,6 +488,12 @@ const buttonsData = [
     },
     enShift: {
       value: '"',
+    },
+    ru: {
+      value: 'э'
+    },
+    ruShift: {
+      value: 'Э'
     }
   },
   {
@@ -368,6 +516,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'Z',
+    },
+    ru: {
+      value: 'я'
+    },
+    ruShift: {
+      value: 'Я'
     }
   },
   {
@@ -377,6 +531,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'X',
+    },
+    ru: {
+      value: 'ч'
+    },
+    ruShift: {
+      value: 'Ч'
     }
   },
   {
@@ -386,6 +546,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'C',
+    },
+    ru: {
+      value: 'с'
+    },
+    ruShift: {
+      value: 'С'
     }
   },
   {
@@ -395,6 +561,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'V',
+    },
+    ru: {
+      value: 'м'
+    },
+    ruShift: {
+      value: 'М'
     }
   },
   {
@@ -404,6 +576,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'B',
+    },
+    ru: {
+      value: 'и'
+    },
+    ruShift: {
+      value: 'И'
     }
   },
   {
@@ -413,6 +591,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'N',
+    },
+    ru: {
+      value: 'т'
+    },
+    ruShift: {
+      value: 'Т'
     }
   },
   {
@@ -422,6 +606,12 @@ const buttonsData = [
     },
     enShift: {
       value: 'M',
+    },
+    ru: {
+      value: 'ь'
+    },
+    ruShift: {
+      value: 'Ь'
     }
   },
   {
@@ -431,6 +621,12 @@ const buttonsData = [
     },
     enShift: {
       value: '<',
+    },
+    ru: {
+      value: 'б'
+    },
+    ruShift: {
+      value: 'Б'
     }
   },
   {
@@ -440,6 +636,12 @@ const buttonsData = [
     },
     enShift: {
       value: '>',
+    },
+    ru: {
+      value: 'ю'
+    },
+    ruShift: {
+      value: 'Ю'
     }
   },
   {
@@ -499,40 +701,58 @@ const buttonsData = [
   },
 ];
 
-function renderButtons(lang) {
+let currentLanguage = 'en';
+
+function renderButtons(language) {
   let buttons = '';
   buttonsData.forEach((buttonData) => {
-    if (buttonData[lang] !== undefined) {
-      buttons += getButton(buttonData[lang].value, buttonData.className, buttonData.keyCode);
+    if (buttonData[language] !== undefined) {
+      buttons += getButton(buttonData[language].value, buttonData.className, buttonData.keyCode);
     } else {
       buttons += getButton(buttonData.value, buttonData.className, buttonData.keyCode);
     }
   });
 
+  keyboardContainer.innerHTML = '';
   keyboardContainer.insertAdjacentHTML('beforeend', buttons);
 }
 
-renderButtons(lang);
+renderButtons(currentLanguage);
 
-// function getActiveButton() {
-// }
+function isShift(button) {
+  if (button.dataset.key === '16') {
+    return true;
+  } return false;
+}
 
-// function displayValues() {
-// }
+function getButtonByCode(keyCode) {
+  let buttons = [...document.getElementsByClassName('button')];
+  buttons = buttons.filter((button) => keyCode === Number(button.dataset.key));
+
+  return buttons;
+}
 
 document.addEventListener('keydown', (e) => {
-  const buttons = [...document.getElementsByClassName('button')];
-  buttons.forEach((button) => {
-    if (e.keyCode === button.dataset.key) {
-      button.classList.add('active');
+  getButtonByCode(e.keyCode).forEach((button) => {
+    if (isShift(button)) {
+      currentLanguage = 'enShift';
+      renderButtons(currentLanguage);
+      getButtonByCode(e.keyCode).forEach((newButton) => {
+        newButton.classList.add('active');
+      });
     }
+    button.classList.add('active');
   });
 });
 
 document.addEventListener('keyup', (e) => {
   const buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
-    if (e.keyCode === button.dataset.key) {
+    if (e.keyCode === Number(button.dataset.key)) {
+      if (isShift(button)) {
+        currentLanguage = 'en';
+        renderButtons(currentLanguage);
+      }
       button.classList.remove('active');
     }
   });
@@ -541,6 +761,13 @@ document.addEventListener('keyup', (e) => {
 keyboardContainer.addEventListener('mousedown', (e) => {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
+    if (isShift(target)) {
+      currentLanguage = 'enShift';
+      renderButtons(currentLanguage);
+      getButtonByCode(Number(target.dataset.key)).forEach((newButton) => {
+        newButton.classList.add('active');
+      });
+    }
     target.classList.add('active');
   }
 });
@@ -548,6 +775,10 @@ keyboardContainer.addEventListener('mousedown', (e) => {
 keyboardContainer.addEventListener('mouseup', (e) => {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
+    if (isShift(target)) {
+      currentLanguage = 'en';
+      renderButtons(currentLanguage);
+    }
     target.classList.remove('active');
   }
 });
