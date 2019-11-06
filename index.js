@@ -535,3 +535,14 @@ document.addEventListener('keyup', (e) => {
     }  
   });
 })
+
+keyboardContainer.addEventListener('click', (e) => {
+  let buttons = [...document.getElementsByClassName('button')];
+  let target = e.target;
+  if (target.tagName === 'BUTTON') {
+    buttons.forEach((button) => {
+        button.classList.remove('active');
+    });
+    target.classList.add('active');
+  }
+})
