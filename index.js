@@ -10,511 +10,515 @@ document.body.append(keyboardContainer);
 
 let lang = 'en';
 
-function getButton(valueEn, className, keyCode) {
+function getButton(value, className, keyCode) {
   if (className !== undefined) {
-    return `<button class="button ${className}" data-key="${keyCode}">${valueEn}</button>`;
+    return `<button class="button ${className}" data-key="${keyCode}">${value}</button>`;
   } else {
-    return `<button class="button" data-key="${keyCode}">${valueEn}</button>`;
+    return `<button class="button" data-key="${keyCode}">${value}</button>`;
   }
 }
   
-let buttons = '';
 const buttonsData = [
   {
     keyCode: '192',
     en: {
-      valueEn: '`',
+      value: '`',
     },
     enShift: {
-      valueEn: '~',
+      value: '~',
     }
   },
   {
-    valueEn: 1,
+    value: 1,
     keyCode: '49',
     enShift: {
-      valueEn: '!',
+      value: '!',
     }
   },
   {
-    valueEn: 2,
+    value: 2,
     keyCode: '50',
     enShift: {
-      valueEn: '@',
+      value: '@',
     }
   },
   {
-    valueEn: 3,
+    value: 3,
     keyCode: '51',
     enShift: {
-      valueEn: '#',
+      value: '#',
     }
   },
   {
-    valueEn: 4,
+    value: 4,
     keyCode: '52',
     enShift: {
-      valueEn: '$',
+      value: '$',
     }
   },
   {
-    valueEn: 5,
+    value: 5,
     keyCode: '53',
     enShift: {
-      valueEn: '%',
+      value: '%',
     }
   },
   {
-    valueEn: 6,
+    value: 6,
     keyCode: '54',
     enShift: {
-      valueEn: '^',
+      value: '^',
     }
   },
   {
-    valueEn: 7,
+    value: 7,
     keyCode: '55',
     enShift: {
-      valueEn: '&',
+      value: '&',
     }
   },
   {
-    valueEn: 8,
+    value: 8,
     keyCode: '56',
     enShift: {
-      valueEn: '*',
+      value: '*',
     }
   },
   {
-    valueEn: 9,
+    value: 9,
     keyCode: '57',
     enShift: {
-      valueEn: '(',
+      value: '(',
     }
   },
   {
-    valueEn: 0,
+    value: 0,
     keyCode: '48',
     enShift: {
-      valueEn: ')',
+      value: ')',
     }
   },
   {
-    valueEn: '-',
+    value: '-',
     keyCode: '189',
     enShift: {
-      valueEn: '_',
+      value: '_',
     }
   },
   {
-    valueEn: '=',
+    value: '=',
     keyCode: '187',
     enShift: {
-      valueEn: '+',
+      value: '+',
     }
   },
   {
-    valueEn: 'Backspace',
+    value: 'Backspace',
     className: 'big-button',
     keyCode: '8'
   },
   {
-    valueEn: 'Tab',
+    value: 'Tab',
     className: 'middle-button',
     keyCode: '9'
   },
   {
     keyCode: '81',
     en: {
-      valueEn: 'q',
+      value: 'q',
     },
     enShift: {
-      valueEn: 'Q',
+      value: 'Q',
     }
   },
   {
     keyCode: '87',
     en: {
-      valueEn: 'w',
+      value: 'w',
     },
     enShift: {
-      valueEn: 'W',
+      value: 'W',
     }
   },
   {
     keyCode: '69',
     en: {
-      valueEn: 'e',
+      value: 'e',
     },
     enShift: {
-      valueEn: 'E',
+      value: 'E',
     }
   },
   {
     keyCode: '82',
     en: {
-      valueEn: 'r',
+      value: 'r',
     },
     enShift: {
-      valueEn: 'R',
+      value: 'R',
     }
   },
   {
     keyCode: '84',
     en: {
-      valueEn: 't',
+      value: 't',
     },
     enShift: {
-      valueEn: 'T',
+      value: 'T',
     }
   },
   {
     keyCode: '89',
     en: {
-      valueEn: 'y',
+      value: 'y',
     },
     enShift: {
-      valueEn: 'Y',
+      value: 'Y',
     }
   },
   {
     keyCode: '85',
     en: {
-      valueEn: 'u',
+      value: 'u',
     },
     enShift: {
-      valueEn: 'U',
+      value: 'U',
     }
   },
   {
     keyCode: '73',
     en: {
-      valueEn: 'i',
+      value: 'i',
     },
     enShift: {
-      valueEn: 'I',
+      value: 'I',
     }
   },
   {
     keyCode: '79',
     en: {
-      valueEn: 'o',
+      value: 'o',
     },
     enShift: {
-      valueEn: 'O',
+      value: 'O',
     }
   },
   {
     keyCode: '80',
     en: {
-      valueEn: 'p',
+      value: 'p',
     },
     enShift: {
-      valueEn: 'P',
+      value: 'P',
     }
   },
   {
     keyCode: '219',
     en: {
-      valueEn: '[',
+      value: '[',
     },
     enShift: {
-      valueEn: '{',
+      value: '{',
     }
   },
   {
     keyCode: '221',
     en: {
-      valueEn: ']',
+      value: ']',
     },
     enShift: {
-      valueEn: '}',
+      value: '}',
     }
   },
   {
     keyCode: '220',
     en: {
-      valueEn: '\\',
+      value: '\\',
     },
     enShift: {
-      valueEn: '/',
+      value: '/',
     }
   },
   {
-    valueEn: 'Del', 
+    value: 'Del', 
     className: 'middle-button',
     keyCode: '46'
   },
   {
-    valueEn: 'Caps Lock', 
+    value: 'Caps Lock', 
     className: 'big-button',
     keyCode: '20'
   },
   {
     keyCode: '65',
     en: {
-      valueEn: 'a',
+      value: 'a',
     },
     enShift: {
-      valueEn: 'A',
+      value: 'A',
     }
   },
   {
     keyCode: '83',
     en: {
-      valueEn: 's',
+      value: 's',
     },
     enShift: {
-      valueEn: 'S',
+      value: 'S',
     }
   },
   {
     keyCode: '68',
     en: {
-      valueEn: 'd',
+      value: 'd',
     },
     enShift: {
-      valueEn: 'D',
+      value: 'D',
     }
   },
   {
     keyCode: '70',
     en: {
-      valueEn: 'f',
+      value: 'f',
     },
     enShift: {
-      valueEn: 'F',
+      value: 'F',
     }
   },
   {
     keyCode: '71',
     en: {
-      valueEn: 'g',
+      value: 'g',
     },
     enShift: {
-      valueEn: 'G',
+      value: 'G',
     }
   },
   {
     keyCode: '72',
     en: {
-      valueEn: 'h',
+      value: 'h',
     },
     enShift: {
-      valueEn: 'H',
+      value: 'H',
     }
   },
   {
     keyCode: '74',
     en: {
-      valueEn: 'j',
+      value: 'j',
     },
     enShift: {
-      valueEn: 'J',
+      value: 'J',
     }
   },
   {
     keyCode: '75',
     en: {
-      valueEn: 'k',
+      value: 'k',
     },
     enShift: {
-      valueEn: 'K',
+      value: 'K',
     }
   },
   {
     keyCode: '76',
     en: {
-      valueEn: 'l',
+      value: 'l',
     },
     enShift: {
-      valueEn: 'L',
+      value: 'L',
     }
   },
   {
     keyCode: '186',
     en: {
-      valueEn: ';',
+      value: ';',
     },
     enShift: {
-      valueEn: ':',
+      value: ':',
     }
   },
   {
     keyCode: '222',
     en: {
-      valueEn: '&#8217;',
+      value: '&#8217;',
     },
     enShift: {
-      valueEn: '"',
+      value: '"',
     }
   },
   {
-    valueEn: 'Enter', 
+    value: 'Enter', 
     className: 'big-button',
     keyCode: '13'
   },
   {
-    valueEn: 'Shift', 
+    value: 'Shift', 
     className: 'big-button',
     keyCode: '16'
   },
   {
-    en: {
-      valueEn: '\\',
-    }
+    value: '\\',
   },
   {
     keyCode: '90',
     en: {
-      valueEn: 'z',
+      value: 'z',
     },
     enShift: {
-      valueEn: 'Z',
+      value: 'Z',
     }
   },
   {
     keyCode: '88',
     en: {
-      valueEn: 'x',
+      value: 'x',
     },
     enShift: {
-      valueEn: 'X',
+      value: 'X',
     }
   },
   {
     keyCode: '67',
     en: {
-      valueEn: 'c',
+      value: 'c',
     },
     enShift: {
-      valueEn: 'C',
+      value: 'C',
     }
   },
   {
     keyCode: '86',
     en: {
-      valueEn: 'v',
+      value: 'v',
     },
     enShift: {
-      valueEn: 'V',
+      value: 'V',
     }
   },
   {
     keyCode: '66',
     en: {
-      valueEn: 'b',
+      value: 'b',
     },
     enShift: {
-      valueEn: 'B',
+      value: 'B',
     }
   },
   {
     keyCode: '78',
     en: {
-      valueEn: 'n',
+      value: 'n',
     },
     enShift: {
-      valueEn: 'N',
+      value: 'N',
     }
   },
   {
     keyCode: '77',
     en: {
-      valueEn: 'm',
+      value: 'm',
     },
     enShift: {
-      valueEn: 'M',
+      value: 'M',
     }
   },
   {
     keyCode: '188',
     en: {
-      valueEn: ',',
+      value: ',',
     },
     enShift: {
-      valueEn: '<',
+      value: '<',
     }
   },
   {
     keyCode: '190',
     en: {
-      valueEn: '.',
+      value: '.',
     },
     enShift: {
-      valueEn: '>',
+      value: '>',
     }
   },
   {
     keyCode: '191',
-    en: {
-      valueEn: '/',
-    }
+    value: '/',
   },
   {  
-    valueEn: '↑',
+    value: '↑',
     keyCode: '38'
   },
   {
-    valueEn: 'Shift', 
+    value: 'Shift', 
     className: 'middle-button',
     keyCode: '16'
   },
   {
-    valueEn: 'Ctrl', 
+    value: 'Ctrl', 
     className: 'middle-button',
     keyCode: '17'
   },
   {
-    valueEn: 'Win', 
+    value: 'Win', 
     className: 'middle-button',
     keyCode: '91'
   },
   {
-    valueEn: 'Alt',
+    value: 'Alt',
     className: 'middle-button',
     keyCode: '18'
     },
   {
-    valueEn: '', 
+    value: '', 
     className: 'space-button',
     keyCode: '32'
   },
   {
-    valueEn: 'Alt', 
+    value: 'Alt', 
     className: 'middle-button',
     keyCode: '18'
   },
   {
-    valueEn: 'Ctrl', 
+    value: 'Ctrl', 
     className: 'middle-button',
     keyCode: '17'
   },
   {
-    valueEn: '←',
+    value: '←',
     keyCode: '37'
   },
   {
-    valueEn: '↓',
+    value: '↓',
     keyCode: '40'
   },
   {
-    valueEn: '→',
+    value: '→',
     keyCode: '39'
   },
 ];
 
-buttonsData.forEach((buttonData) => {
-  if (buttonData.en !== undefined) {
-    buttons += getButton(buttonData.en.valueEn, buttonData.className, buttonData.keyCode);
-  } else {
-    buttons += getButton(buttonData.valueEn, buttonData.className, buttonData.keyCode);
-  }
-});
+function renderButtons(lang) {
+  let buttons = '';
+  buttonsData.forEach((buttonData) => {
+    if (buttonData[lang] !== undefined) {
+      buttons += getButton(buttonData[lang].value, buttonData.className, buttonData.keyCode);
+    } else {
+      buttons += getButton(buttonData.value, buttonData.className, buttonData.keyCode);
+    }
+  });
 
-keyboardContainer.insertAdjacentHTML('beforeend', buttons);
+  keyboardContainer.insertAdjacentHTML('beforeend', buttons);
+}
+
+renderButtons(lang);
 
 function getActiveButton() {
+  
+}
+
+function displayValues() {
   
 }
 
@@ -536,13 +540,22 @@ document.addEventListener('keyup', (e) => {
   });
 })
 
-keyboardContainer.addEventListener('click', (e) => {
+document.addEventListener('mousedown', (e) => {
   let buttons = [...document.getElementsByClassName('button')];
   let target = e.target;
-  if (target.tagName === 'BUTTON') {
+  if (target.tagName == 'BUTTON') {
     buttons.forEach((button) => {
-        button.classList.remove('active');
+      button.classList.add('active');
     });
-    target.classList.add('active');
+  }
+})
+
+document.addEventListener('mouseup', (e) => {
+  let buttons = [...document.getElementsByClassName('button')];
+  let target = e.target;
+  if (target.tagName == 'BUTTON') {
+    buttons.forEach((button) => {
+      button.classList.remove('active');
+    });
   }
 })
