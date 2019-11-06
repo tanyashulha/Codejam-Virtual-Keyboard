@@ -21,58 +21,97 @@ function getButton(valueEn, className, keyCode) {
 let buttons = '';
 const buttonsData = [
   {
+    keyCode: '192',
     en: {
       valueEn: '`',
-      keyCode: '192'
+    },
+    enShift: {
+      valueEn: '~',
     }
   },
   {
     valueEn: 1,
-    keyCode: '49'
+    keyCode: '49',
+    enShift: {
+      valueEn: '!',
+    }
   },
   {
     valueEn: 2,
-    keyCode: '50'
+    keyCode: '50',
+    enShift: {
+      valueEn: '@',
+    }
   },
   {
     valueEn: 3,
-    keyCode: '51'
+    keyCode: '51',
+    enShift: {
+      valueEn: '#',
+    }
   },
   {
     valueEn: 4,
-    keyCode: '52'
+    keyCode: '52',
+    enShift: {
+      valueEn: '$',
+    }
   },
   {
     valueEn: 5,
-    keyCode: '53'
+    keyCode: '53',
+    enShift: {
+      valueEn: '%',
+    }
   },
   {
     valueEn: 6,
-    keyCode: '54'
+    keyCode: '54',
+    enShift: {
+      valueEn: '^',
+    }
   },
   {
     valueEn: 7,
-    keyCode: '55'
+    keyCode: '55',
+    enShift: {
+      valueEn: '&',
+    }
   },
   {
     valueEn: 8,
-    keyCode: '56'
+    keyCode: '56',
+    enShift: {
+      valueEn: '*',
+    }
   },
   {
     valueEn: 9,
-    keyCode: '57'
+    keyCode: '57',
+    enShift: {
+      valueEn: '(',
+    }
   },
   {
     valueEn: 0,
-    keyCode: '48'
+    keyCode: '48',
+    enShift: {
+      valueEn: ')',
+    }
   },
   {
     valueEn: '-',
-    keyCode: '189'
+    keyCode: '189',
+    enShift: {
+      valueEn: '_',
+    }
   },
   {
     valueEn: '=',
-    keyCode: '187'
+    keyCode: '187',
+    enShift: {
+      valueEn: '+',
+    }
   },
   {
     valueEn: 'Backspace',
@@ -85,81 +124,120 @@ const buttonsData = [
     keyCode: '9'
   },
   {
+    keyCode: '81',
     en: {
       valueEn: 'q',
-      keyCode: '81'
+    },
+    enShift: {
+      valueEn: 'Q',
     }
   },
   {
+    keyCode: '87',
     en: {
       valueEn: 'w',
-      keyCode: '87'
+    },
+    enShift: {
+      valueEn: 'W',
     }
   },
   {
+    keyCode: '69',
     en: {
       valueEn: 'e',
-      keyCode: '69'
+    },
+    enShift: {
+      valueEn: 'E',
     }
   },
   {
+    keyCode: '82',
     en: {
       valueEn: 'r',
-      keyCode: '82'
+    },
+    enShift: {
+      valueEn: 'R',
     }
   },
   {
+    keyCode: '84',
     en: {
       valueEn: 't',
-      keyCode: '84'
+    },
+    enShift: {
+      valueEn: 'T',
     }
   },
   {
+    keyCode: '89',
     en: {
       valueEn: 'y',
-      keyCode: '89'
+    },
+    enShift: {
+      valueEn: 'Y',
     }
   },
   {
+    keyCode: '85',
     en: {
       valueEn: 'u',
-      keyCode: '85'
+    },
+    enShift: {
+      valueEn: 'U',
     }
   },
   {
+    keyCode: '73',
     en: {
       valueEn: 'i',
-      keyCode: '73'
+    },
+    enShift: {
+      valueEn: 'I',
     }
   },
   {
+    keyCode: '79',
     en: {
       valueEn: 'o',
-      keyCode: '79'
+    },
+    enShift: {
+      valueEn: 'O',
     }
   },
   {
+    keyCode: '80',
     en: {
       valueEn: 'p',
-      keyCode: '80'
+    },
+    enShift: {
+      valueEn: 'P',
     }
   },
   {
+    keyCode: '219',
     en: {
       valueEn: '[',
-      keyCode: '219'
+    },
+    enShift: {
+      valueEn: '{',
     }
   },
   {
+    keyCode: '221',
     en: {
       valueEn: ']',
-      keyCode: '221'
+    },
+    enShift: {
+      valueEn: '}',
     }
   },
   {
+    keyCode: '220',
     en: {
       valueEn: '\\',
-      keyCode: '220'
+    },
+    enShift: {
+      valueEn: '/',
     }
   },
   {
@@ -173,69 +251,102 @@ const buttonsData = [
     keyCode: '20'
   },
   {
+    keyCode: '65',
     en: {
       valueEn: 'a',
-      keyCode: '65'
+    },
+    enShift: {
+      valueEn: 'A',
     }
   },
   {
+    keyCode: '83',
     en: {
       valueEn: 's',
-      keyCode: '83'
+    },
+    enShift: {
+      valueEn: 'S',
     }
   },
   {
+    keyCode: '68',
     en: {
       valueEn: 'd',
-      keyCode: '68'
+    },
+    enShift: {
+      valueEn: 'D',
     }
   },
   {
+    keyCode: '70',
     en: {
       valueEn: 'f',
-      keyCode: '70'
+    },
+    enShift: {
+      valueEn: 'F',
     }
   },
   {
+    keyCode: '71',
     en: {
       valueEn: 'g',
-      keyCode: '71'
+    },
+    enShift: {
+      valueEn: 'G',
     }
   },
   {
+    keyCode: '72',
     en: {
       valueEn: 'h',
-      keyCode: '72'
+    },
+    enShift: {
+      valueEn: 'H',
     }
   },
   {
+    keyCode: '74',
     en: {
       valueEn: 'j',
-      keyCode: '74'
+    },
+    enShift: {
+      valueEn: 'J',
     }
   },
   {
+    keyCode: '75',
     en: {
       valueEn: 'k',
-      keyCode: '75'
+    },
+    enShift: {
+      valueEn: 'K',
     }
   },
   {
+    keyCode: '76',
     en: {
       valueEn: 'l',
-      keyCode: '76'
+    },
+    enShift: {
+      valueEn: 'L',
     }
   },
   {
+    keyCode: '186',
     en: {
       valueEn: ';',
-      keyCode: '186'
+    },
+    enShift: {
+      valueEn: ':',
     }
   },
   {
+    keyCode: '222',
     en: {
       valueEn: '&#8217;',
-      keyCode: '222'
+    },
+    enShift: {
+      valueEn: '"',
     }
   },
   {
@@ -251,72 +362,98 @@ const buttonsData = [
   {
     en: {
       valueEn: '\\',
-      keyCode: '220'
     }
   },
   {
+    keyCode: '90',
     en: {
       valueEn: 'z',
-      keyCode: '90'
+    },
+    enShift: {
+      valueEn: 'Z',
     }
   },
   {
+    keyCode: '88',
     en: {
       valueEn: 'x',
-      keyCode: '88'
+    },
+    enShift: {
+      valueEn: 'X',
     }
   },
   {
+    keyCode: '67',
     en: {
       valueEn: 'c',
-      keyCode: '67'
+    },
+    enShift: {
+      valueEn: 'C',
     }
   },
   {
+    keyCode: '86',
     en: {
       valueEn: 'v',
-      keyCode: '86'
+    },
+    enShift: {
+      valueEn: 'V',
     }
   },
   {
+    keyCode: '66',
     en: {
       valueEn: 'b',
-      keyCode: '66'
+    },
+    enShift: {
+      valueEn: 'B',
     }
   },
   {
+    keyCode: '78',
     en: {
       valueEn: 'n',
-      keyCode: '78'
+    },
+    enShift: {
+      valueEn: 'N',
     }
   },
   {
+    keyCode: '77',
     en: {
       valueEn: 'm',
-      keyCode: '77'
+    },
+    enShift: {
+      valueEn: 'M',
     }
   },
   {
+    keyCode: '188',
     en: {
       valueEn: ',',
-      keyCode: '188'
+    },
+    enShift: {
+      valueEn: '<',
     }
   },
   {
+    keyCode: '190',
     en: {
       valueEn: '.',
-      keyCode: '190'
+    },
+    enShift: {
+      valueEn: '>',
     }
   },
   {
+    keyCode: '191',
     en: {
       valueEn: '/',
-      keyCode: '191'
     }
   },
   {  
     valueEn: '↑',
-    keyCde: '38'
+    keyCode: '38'
   },
   {
     valueEn: 'Shift', 
@@ -369,7 +506,7 @@ const buttonsData = [
 
 buttonsData.forEach((buttonData) => {
   if (buttonData.en !== undefined) {
-    buttons += getButton(buttonData.en.valueEn, buttonData.className, buttonData.en.keyCode);
+    buttons += getButton(buttonData.en.valueEn, buttonData.className, buttonData.keyCode);
   } else {
     buttons += getButton(buttonData.valueEn, buttonData.className, buttonData.keyCode);
   }
@@ -385,10 +522,16 @@ document.addEventListener('keydown', (e) => {
   let buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
     if (e.keyCode == button.dataset.key) {
-      button.classList.toggle('active');
-    } else {
-      button.classList.remove('active');
+      button.classList.add('active');
     }
-  })
+  });
+})
 
+document.addEventListener('keyup', (e) => {
+  let buttons = [...document.getElementsByClassName('button')];
+  buttons.forEach((button) => {
+    if (e.keyCode == button.dataset.key) {
+      button.classList.remove('active');
+    }  
+  });
 })
