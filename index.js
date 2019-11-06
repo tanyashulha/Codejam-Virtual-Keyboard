@@ -8,11 +8,13 @@ const keyboardContainer = document.createElement('div');
 keyboardContainer.className = 'keyboard';
 document.body.append(keyboardContainer);
 
-function getButton(valueEn, className) {
+let lang = 'en';
+
+function getButton(valueEn, className, keyCode) {
   if (className !== undefined) {
-    return `<button class="button ${className}">${valueEn}</button>`;
+    return `<button class="button ${className}" data-key="${keyCode}">${valueEn}</button>`;
   } else {
-    return `<button class="button">${valueEn}</button>`;
+    return `<button class="button" data-key="${keyCode}">${valueEn}</button>`;
   }
 }
   
@@ -367,9 +369,9 @@ const buttonsData = [
 
 buttonsData.forEach((buttonData) => {
   if (buttonData.en !== undefined) {
-    buttons += getButton(buttonData.en.valueEn, buttonData.className);
+    buttons += getButton(buttonData.en.valueEn, buttonData.className, buttonData.en.keyCode);
   } else {
-    buttons += getButton(buttonData.valueEn, buttonData.className);
+    buttons += getButton(buttonData.valueEn, buttonData.className, buttonData.keyCode);
   }
 });
 
@@ -380,5 +382,13 @@ function getActiveButton() {
 }
 
 document.addEventListener('keydown', (e) => {
-    
+  let buttons = [...document.getElementsByClassName('button')];
+  buttons.forEach((button) => {
+    if (e.keyCode == button.dataset.key) {
+      button.classList.toggle('active');
+    } else {
+      button.classList.remove('active');
+    }
+  })
+
 })
