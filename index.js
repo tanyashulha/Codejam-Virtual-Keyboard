@@ -11,9 +11,8 @@ document.body.append(keyboardContainer);
 function getButton(value, className, keyCode) {
   if (className !== undefined) {
     return `<button class="button ${className}" data-key="${keyCode}">${value}</button>`;
-  } else {
-    return `<button class="button" data-key="${keyCode}">${value}</button>`;
   }
+  return `<button class="button" data-key="${keyCode}">${value}</button>`;
 }
 
 const buttonsData = [
@@ -732,6 +731,20 @@ function getButtonByCode(keyCode) {
   return buttons;
 }
 
+function addValueToTextarea(keyCode) {
+  const arrCodes = [9, 20, 8, 46, 13, 16, 17, 91, 18, 37, 38, 39, 40];
+  let letter;
+  if (!arrCodes.includes(keyCode)) {
+    if (currentLanguage === 'en') {
+      letter = String.fromCharCode(keyCode).toLowerCase();
+      textField.innerHTML += letter;
+    } else if (currentLanguage === 'enShift') {
+      letter = String.fromCharCode(keyCode);
+      textField.innerHTML += letter;
+    }
+  }
+}
+
 document.addEventListener('keydown', (e) => {
   getButtonByCode(e.keyCode).forEach((button) => {
     if (isShift(button)) {
@@ -741,7 +754,11 @@ document.addEventListener('keydown', (e) => {
         newButton.classList.add('active');
       });
     }
+    if (button.dataset.key === '8') {
+      textField.innerHTML = textField.innerHTML.slice(0, -1);
+    }
     button.classList.add('active');
+    addValueToTextarea(e.keyCode);
   });
 });
 
@@ -768,7 +785,11 @@ keyboardContainer.addEventListener('mousedown', (e) => {
         newButton.classList.add('active');
       });
     }
+    if (target.dataset.key === '8') {
+      textField.innerHTML = textField.innerHTML.slice(0, -1);
+    }
     target.classList.add('active');
+    addValueToTextarea(Number(target.dataset.key));
   }
 });
 
