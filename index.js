@@ -17,7 +17,7 @@ function getButton(value, className, keyCode) {
     return `<button class="button" data-key="${keyCode}">${value}</button>`;
   }
 }
-  
+
 const buttonsData = [
   {
     keyCode: '192',
@@ -240,12 +240,12 @@ const buttonsData = [
     }
   },
   {
-    value: 'Del', 
+    value: 'Del',
     className: 'middle-button',
     keyCode: '46'
   },
   {
-    value: 'Caps Lock', 
+    value: 'Caps Lock',
     className: 'big-button',
     keyCode: '20'
   },
@@ -349,12 +349,12 @@ const buttonsData = [
     }
   },
   {
-    value: 'Enter', 
+    value: 'Enter',
     className: 'big-button',
     keyCode: '13'
   },
   {
-    value: 'Shift', 
+    value: 'Shift',
     className: 'big-button',
     keyCode: '16'
   },
@@ -446,22 +446,22 @@ const buttonsData = [
     keyCode: '191',
     value: '/',
   },
-  {  
+  {
     value: '↑',
     keyCode: '38'
   },
   {
-    value: 'Shift', 
+    value: 'Shift',
     className: 'middle-button',
     keyCode: '16'
   },
   {
-    value: 'Ctrl', 
+    value: 'Ctrl',
     className: 'middle-button',
     keyCode: '17'
   },
   {
-    value: 'Win', 
+    value: 'Win',
     className: 'middle-button',
     keyCode: '91'
   },
@@ -469,19 +469,19 @@ const buttonsData = [
     value: 'Alt',
     className: 'middle-button',
     keyCode: '18'
-    },
+  },
   {
-    value: '', 
+    value: '',
     className: 'space-button',
     keyCode: '32'
   },
   {
-    value: 'Alt', 
+    value: 'Alt',
     className: 'middle-button',
     keyCode: '18'
   },
   {
-    value: 'Ctrl', 
+    value: 'Ctrl',
     className: 'middle-button',
     keyCode: '17'
   },
@@ -514,48 +514,40 @@ function renderButtons(lang) {
 
 renderButtons(lang);
 
-function getActiveButton() {
-  
-}
+// function getActiveButton() {
+// }
 
-function displayValues() {
-  
-}
+// function displayValues() {
+// }
 
 document.addEventListener('keydown', (e) => {
-  let buttons = [...document.getElementsByClassName('button')];
+  const buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
-    if (e.keyCode == button.dataset.key) {
+    if (e.keyCode === button.dataset.key) {
       button.classList.add('active');
     }
   });
-})
+});
 
 document.addEventListener('keyup', (e) => {
-  let buttons = [...document.getElementsByClassName('button')];
+  const buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
-    if (e.keyCode == button.dataset.key) {
+    if (e.keyCode === button.dataset.key) {
       button.classList.remove('active');
-    }  
+    }
   });
-})
+});
 
-document.addEventListener('mousedown', (e) => {
-  let buttons = [...document.getElementsByClassName('button')];
-  let target = e.target;
-  if (target.tagName == 'BUTTON') {
-    buttons.forEach((button) => {
-      button.classList.add('active');
-    });
+keyboardContainer.addEventListener('mousedown', (e) => {
+  const target = e.target;
+  if (target.tagName === 'BUTTON') {
+    target.classList.add('active');
   }
-})
+});
 
-document.addEventListener('mouseup', (e) => {
-  let buttons = [...document.getElementsByClassName('button')];
-  let target = e.target;
-  if (target.tagName == 'BUTTON') {
-    buttons.forEach((button) => {
-      button.classList.remove('active');
-    });
+keyboardContainer.addEventListener('mouseup', (e) => {
+  const target = e.target;
+  if (target.tagName === 'BUTTON') {
+    target.classList.remove('active');
   }
-})
+});
