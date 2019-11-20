@@ -36,6 +36,9 @@ const buttonsData = [
     keyCode: '49',
     enShift: {
       value: '!',
+    },
+    ruShift: {
+      value: '!'
     }
   },
   {
@@ -43,6 +46,9 @@ const buttonsData = [
     keyCode: '50',
     enShift: {
       value: '@',
+    },
+    ruShift: {
+      value: '"'
     }
   },
   {
@@ -50,6 +56,9 @@ const buttonsData = [
     keyCode: '51',
     enShift: {
       value: '#',
+    },
+    ruShift: {
+      value: '№'
     }
   },
   {
@@ -57,6 +66,9 @@ const buttonsData = [
     keyCode: '52',
     enShift: {
       value: '$',
+    },
+    ruShift: {
+      value: ';'
     }
   },
   {
@@ -64,6 +76,9 @@ const buttonsData = [
     keyCode: '53',
     enShift: {
       value: '%',
+    },
+    ruShift: {
+      value: '%'
     }
   },
   {
@@ -71,6 +86,9 @@ const buttonsData = [
     keyCode: '54',
     enShift: {
       value: '^',
+    },
+    ruShift: {
+      value: ':'
     }
   },
   {
@@ -78,6 +96,9 @@ const buttonsData = [
     keyCode: '55',
     enShift: {
       value: '&',
+    },
+    ruShift: {
+      value: '?'
     }
   },
   {
@@ -85,6 +106,9 @@ const buttonsData = [
     keyCode: '56',
     enShift: {
       value: '*',
+    },
+    ruShift: {
+      value: '*'
     }
   },
   {
@@ -92,6 +116,9 @@ const buttonsData = [
     keyCode: '57',
     enShift: {
       value: '(',
+    },
+    ruShift: {
+      value: '('
     }
   },
   {
@@ -99,6 +126,9 @@ const buttonsData = [
     keyCode: '48',
     enShift: {
       value: ')',
+    },
+    ruShift: {
+      value: ')'
     }
   },
   {
@@ -106,6 +136,9 @@ const buttonsData = [
     keyCode: '189',
     enShift: {
       value: '_',
+    },
+    ruShift: {
+      value: '_'
     }
   },
   {
@@ -113,6 +146,9 @@ const buttonsData = [
     keyCode: '187',
     enShift: {
       value: '+',
+    },
+    ruShift: {
+      value: '+'
     }
   },
   {
@@ -700,7 +736,7 @@ const buttonsData = [
   },
 ];
 
-let currentLanguage = 'en';
+let currentLanguage = 'ru';
 
 function renderButtons(language) {
   let buttons = '';
@@ -716,6 +752,13 @@ function renderButtons(language) {
   keyboardContainer.insertAdjacentHTML('beforeend', buttons);
 }
 
+function getButtonByCode(keyCode) {
+  let buttons = [...document.getElementsByClassName('button')];
+  buttons = buttons.filter((button) => keyCode === Number(button.dataset.key));
+
+  return [buttons[0]];
+}
+
 function isShift(button) {
   if (button.dataset.key === '16') {
     return true;
@@ -728,31 +771,31 @@ function isCtrl(button) {
   } return false;
 }
 
-function getButtonByCode(keyCode) {
-  let buttons = [...document.getElementsByClassName('button')];
-  buttons = buttons.filter((button) => keyCode === Number(button.dataset.key));
-
-  return [buttons[0]];
-}
 
 function addValueToTextarea(keyCode) {
   const arrCodes = [9, 20, 8, 46, 13, 16, 17, 91, 18, 37, 38, 39, 40];
   let letter;
   if (!arrCodes.includes(keyCode)) {
-    if (!currentLanguage.includes('Shift')) {
+    if (!currentLanguage.includes(16)) {
       letter = String.fromCharCode(keyCode).toLowerCase();
       textField.innerHTML += letter;
-    } else if (currentLanguage.includes('Shift')) {
-      letter = String.fromCharCode(keyCode);
-      textField.innerHTML += letter;
     }
+  } else if (currentLanguage.includes(16)) {
+    letter = String.fromCharCode(keyCode);
+    textField.innerHTML += letter;
   }
 }
 
 document.addEventListener('keydown', (event) => {
   getButtonByCode(event.keyCode).forEach((button) => {
-    if (isShift(button)) {
+    if (isShift(button) && currentLanguage === 'en') {
       currentLanguage = 'enShift';
+      renderButtons(currentLanguage);
+      getButtonByCode(event.keyCode).forEach((newButton) => {
+        newButton.classList.add('active');
+      });
+    } else if (isShift(button) && currentLanguage === 'ru') {
+      currentLanguage = 'ruShift';
       renderButtons(currentLanguage);
       getButtonByCode(event.keyCode).forEach((newButton) => {
         newButton.classList.add('active');
@@ -760,10 +803,10 @@ document.addEventListener('keydown', (event) => {
     }
     if (isCtrl(button)) {
       if (currentLanguage === 'enShift') {
-        currentLanguage = 'ruShift';
+        currentLanguage = 'ru';
         renderButtons(currentLanguage);
       } else if (currentLanguage === 'ruShift') {
-        currentLanguage = 'enShift';
+        currentLanguage = 'en';
         renderButtons(currentLanguage);
       }
     }
@@ -779,12 +822,11 @@ document.addEventListener('keyup', (event) => {
   const buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
     if (event.keyCode === Number(button.dataset.key)) {
-      if (isShift(button)) {
-        if (currentLanguage === 'ruShift') {
-          currentLanguage = 'ru';
-        } else if (currentLanguage === 'enShift') {
-          currentLanguage = 'en';
-        }
+      if (isShift(button) && currentLanguage === 'enShift') {
+        currentLanguage = 'en';
+        renderButtons(currentLanguage);
+      } else if (isShift(button) && currentLanguage === 'ruShift') {
+        currentLanguage = 'ru';
         renderButtons(currentLanguage);
       }
       button.classList.remove('active');
@@ -795,8 +837,14 @@ document.addEventListener('keyup', (event) => {
 keyboardContainer.addEventListener('mousedown', (event) => {
   const target = event.target;
   if (target.tagName === 'BUTTON') {
-    if (isShift(target)) {
+    if (isShift(target) && currentLanguage === 'en') {
       currentLanguage = 'enShift';
+      renderButtons(currentLanguage);
+      getButtonByCode(Number(target.dataset.key)).forEach((newButton) => {
+        newButton.classList.add('active');
+      });
+    } else if (isShift(target) && currentLanguage === 'ru') {
+      currentLanguage = 'ruShift';
       renderButtons(currentLanguage);
       getButtonByCode(Number(target.dataset.key)).forEach((newButton) => {
         newButton.classList.add('active');
@@ -813,8 +861,11 @@ keyboardContainer.addEventListener('mousedown', (event) => {
 keyboardContainer.addEventListener('mouseup', (event) => {
   const target = event.target;
   if (target.tagName === 'BUTTON') {
-    if (isShift(target)) {
+    if (isShift(target) && currentLanguage === 'enShift') {
       currentLanguage = 'en';
+      renderButtons(currentLanguage);
+    } else if (isShift(target) && currentLanguage === 'ruShift') {
+      currentLanguage = 'ru';
       renderButtons(currentLanguage);
     }
     target.classList.remove('active');
