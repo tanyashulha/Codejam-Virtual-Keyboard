@@ -716,8 +716,6 @@ function renderButtons(language) {
   keyboardContainer.insertAdjacentHTML('beforeend', buttons);
 }
 
-renderButtons(currentLanguage);
-
 function isShift(button) {
   if (button.dataset.key === '16') {
     return true;
@@ -751,12 +749,12 @@ function addValueToTextarea(keyCode) {
   }
 }
 
-document.addEventListener('keydown', (e) => {
-  getButtonByCode(e.keyCode).forEach((button) => {
+document.addEventListener('keydown', (event) => {
+  getButtonByCode(event.keyCode).forEach((button) => {
     if (isShift(button)) {
       currentLanguage = 'enShift';
       renderButtons(currentLanguage);
-      getButtonByCode(e.keyCode).forEach((newButton) => {
+      getButtonByCode(event.keyCode).forEach((newButton) => {
         newButton.classList.add('active');
       });
     }
@@ -773,14 +771,14 @@ document.addEventListener('keydown', (e) => {
       textField.innerHTML = textField.innerHTML.slice(0, -1);
     }
     button.classList.add('active');
-    addValueToTextarea(e.keyCode);
+    addValueToTextarea(event.keyCode);
   });
 });
 
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keyup', (event) => {
   const buttons = [...document.getElementsByClassName('button')];
   buttons.forEach((button) => {
-    if (e.keyCode === Number(button.dataset.key)) {
+    if (event.keyCode === Number(button.dataset.key)) {
       if (isShift(button)) {
         if (currentLanguage === 'ruShift') {
           currentLanguage = 'ru';
@@ -794,8 +792,8 @@ document.addEventListener('keyup', (e) => {
   });
 });
 
-keyboardContainer.addEventListener('mousedown', (e) => {
-  const target = e.target;
+keyboardContainer.addEventListener('mousedown', (event) => {
+  const target = event.target;
   if (target.tagName === 'BUTTON') {
     if (isShift(target)) {
       currentLanguage = 'enShift';
@@ -812,8 +810,8 @@ keyboardContainer.addEventListener('mousedown', (e) => {
   }
 });
 
-keyboardContainer.addEventListener('mouseup', (e) => {
-  const target = e.target;
+keyboardContainer.addEventListener('mouseup', (event) => {
+  const target = event.target;
   if (target.tagName === 'BUTTON') {
     if (isShift(target)) {
       currentLanguage = 'en';
@@ -822,3 +820,5 @@ keyboardContainer.addEventListener('mouseup', (e) => {
     target.classList.remove('active');
   }
 });
+
+renderButtons(currentLanguage);
